@@ -64,16 +64,9 @@ end
 
 function update_water_collision( args )
   local vegetation_enabled = args.vegetation
-  local mask = data.raw.tile[args.tile].collision_mask
-  for i = #mask, 1, -1 do
-    -- make sure it is not colliding by default
-    if mask[i] == "doodad-layer" then
-      table.remove(mask, i)
-    end	
-  end
-  -- add collision if needed
   if not vegetation_enabled then
-    table.insert(mask, "doodad-layer")
+    local mask = data.raw.tile[args.tile].collision_mask.layers
+    mask.doodad = true
   end
 end
 
