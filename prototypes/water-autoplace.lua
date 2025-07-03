@@ -80,22 +80,22 @@ end
 function update_green_shallow_tiles()
   local tile_name = "water-shallow"
   data.raw.tile[tile_name].variants.transition.overlay_layout.inner_corner.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/inner-corner.png"
+    "__the_shallows_updated__/graphics/terrain/water-shallow/inner-corner.png"
   data.raw.tile[tile_name].variants.transition.overlay_layout.outer_corner.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/outer-corner.png"
+    "__the_shallows_updated__/graphics/terrain/water-shallow/outer-corner.png"
   data.raw.tile[tile_name].variants.transition.overlay_layout.side.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/side.png"
+    "__the_shallows_updated__/graphics/terrain/water-shallow/side.png"
   data.raw.tile[tile_name].effect_color_secondary = { r=55, g=104, b=0 }
 end
 
 function update_blue_shallow_tiles()
   local tile_name = "water-mud"
   data.raw.tile[tile_name].variants.transition.overlay_layout.inner_corner.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-mud/inner-corner.png"
+    "__the_shallows_updated__/graphics/terrain/water-mud/inner-corner.png"
   data.raw.tile[tile_name].variants.transition.overlay_layout.outer_corner.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-mud/outer-corner.png"
+    "__the_shallows_updated__/graphics/terrain/water-mud/outer-corner.png"
   data.raw.tile[tile_name].variants.transition.overlay_layout.side.spritesheet =
-    "__the_shallows_for_2.0__/graphics/terrain/water-mud/side.png"
+    "__the_shallows_updated__/graphics/terrain/water-mud/side.png"
   data.raw.tile[tile_name].effect_color_secondary = { r=52, g=92, b=5 }
 end
 
