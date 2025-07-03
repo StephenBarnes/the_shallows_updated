@@ -1,11 +1,11 @@
 {
-  "name": "the_shallows",
-  "version": "1.0.3",
+  "name": "the_shallows_for_2.0",
+  "version": "2.0.0",
   "title": "The Shallows",
   "author": "kafoaai",
-  "factorio_version": "1.1",
+  "factorio_version": "2.0",
   "dependencies": [
-    "base >= 1.1",
+    "base >= 2.0",
     "! shallow_water"
   ],
   "description": "2 types of traversable shallow water types will be generated on the shoreline."

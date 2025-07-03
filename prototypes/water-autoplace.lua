@@ -1,4 +1,15 @@
-local noise = require("noise")
+local function make_water_autoplace_settings(max_elevation, influence)
+	local fitness = "(" .. max_elevation .. " - elevation)"
+	-- Adjust fitness to allow higher-influence (usually deeper) water to override shallower water,
+	-- even at elevations where they both have >0 fitness
+	local adjusted_fitness = "(" .. influence .. " * min(" .. fitness .. ", 1))"
+	return {
+		-- If fitness is < 0, probability will be -infinity,
+		-- so that water doesn't override the default walkable tile (in case no other tile is placed).
+		-- Otherwise probability is adjusted_fitness:
+		probability_expression = "min(" .. fitness .. " * " .. math.huge .. ", " .. adjusted_fitness .. ")",
+	}
+end
 
 function update_all_water_autoplace( args )
   local config =
@@ -31,20 +42,6 @@ function update_all_water_autoplace( args )
 	data.raw["tile"][config[i].tile].autoplace = 
 	  make_water_autoplace_settings(distance, influence)
   end
-end
-
-local function make_water_autoplace_settings(max_elevation, influence)
-	local elevation = noise.var("elevation")
-	local fitness = max_elevation - elevation
-	-- Adjust fitness to allow higher-influence (usually deeper) water to override shallower water,
-	-- even at elevations where they both have >0 fitness
-	local adjusted_fitness = influence * noise.min(fitness, 1)
-	return {
-		-- If fitness is < 0, probability will be -infinity,
-		-- so that water doesn't override the default walkable tile (in case no other tile is placed).
-		-- Otherwise probability is adjusted_fitness:
-		probability_expression = noise.min(fitness * math.huge, adjusted_fitness),
-	}
 end
 
 function update_all_water_collision( args )
@@ -82,41 +79,23 @@ end
 
 function update_green_shallow_tiles()
   local tile_name = "water-shallow"
-  data.raw.tile[tile_name].variants.inner_corner.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/inner-corner.png"
-  data.raw.tile[tile_name].variants.inner_corner.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/hr-inner-corner.png"
-    
-  data.raw.tile[tile_name].variants.outer_corner.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/outer-corner.png"
-  data.raw.tile[tile_name].variants.outer_corner.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/hr-outer-corner.png"
-    
-  data.raw.tile[tile_name].variants.side.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/side.png"
-  data.raw.tile[tile_name].variants.side.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-shallow/hr-side.png"
-    
+  data.raw.tile[tile_name].variants.transition.overlay_layout.inner_corner.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/inner-corner.png"
+  data.raw.tile[tile_name].variants.transition.overlay_layout.outer_corner.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/outer-corner.png"
+  data.raw.tile[tile_name].variants.transition.overlay_layout.side.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-shallow/side.png"
   data.raw.tile[tile_name].effect_color_secondary = { r=55, g=104, b=0 }
 end
 
 function update_blue_shallow_tiles()
   local tile_name = "water-mud"
-  data.raw.tile[tile_name].variants.inner_corner.picture =
-    "__the_shallows__/graphics/terrain/water-mud/inner-corner.png"
-  data.raw.tile[tile_name].variants.inner_corner.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-mud/hr-inner-corner.png"
-    
-  data.raw.tile[tile_name].variants.outer_corner.picture =
-    "__the_shallows__/graphics/terrain/water-mud/outer-corner.png"
-  data.raw.tile[tile_name].variants.outer_corner.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-mud/hr-outer-corner.png"
-    
-  data.raw.tile[tile_name].variants.side.picture =
-    "__the_shallows__/graphics/terrain/water-mud/side.png"
-  data.raw.tile[tile_name].variants.side.hr_version.picture =
-    "__the_shallows__/graphics/terrain/water-mud/hr-side.png"
-    
+  data.raw.tile[tile_name].variants.transition.overlay_layout.inner_corner.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-mud/inner-corner.png"
+  data.raw.tile[tile_name].variants.transition.overlay_layout.outer_corner.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-mud/outer-corner.png"
+  data.raw.tile[tile_name].variants.transition.overlay_layout.side.spritesheet =
+    "__the_shallows_for_2.0__/graphics/terrain/water-mud/side.png"
   data.raw.tile[tile_name].effect_color_secondary = { r=52, g=92, b=5 }
 end
 
