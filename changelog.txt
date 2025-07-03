@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.3
+Date: 2024-01-14
+    - The polluted/green water shader effect has been enabled for the shallow water as well.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.2
+Date: 2023-11-08
+    - fixed an issue where it was impossible to change blue shallow water vegetation. it was always on.
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2023-10-31
+    - fix thin line appearing between green shallow and water tile
+    - updated the README
+    - updated the screenshots
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: 2023-10-31
+    - initial release

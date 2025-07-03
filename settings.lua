@@ -1,0 +1,62 @@
+data:extend{
+  { 
+    name          = 'ts-preset',
+    type          = 'string-setting',
+    setting_type  = 'startup',
+    default_value = 'custom',
+    allowed_values = {
+      'vanilla', 'swamp', 'blue', 'green', 'custom'
+    },
+    order         = '000',
+  },
+  { 
+    name          = 'ts-water-shallow-vegetation',
+    type          = 'bool-setting',
+    setting_type  = 'startup',
+    default_value = true,
+    order         = '010',
+  },
+  { 
+    name          = 'ts-water-shallow-distance',
+    type          = 'double-setting',
+    setting_type  = 'startup',
+    default_value = 0,
+    minimum_value = 0,
+    maximum_value = 20,
+    order         = '011',
+  },
+  { 
+    name          = 'ts-water-mud-vegetation',
+    type          = 'bool-setting',
+    setting_type  = 'startup',
+    default_value = false,
+    order         = '020',
+  },
+  { 
+    name          = 'ts-water-mud-distance',
+    type          = 'double-setting',
+    setting_type  = 'startup',
+    default_value = 0.8,
+    minimum_value = 0,
+    maximum_value = 20,
+    order         = '022',
+  },
+  { 
+    name          = 'ts-water-normal-distance',
+    type          = 'double-setting',
+    setting_type  = 'startup',
+    default_value = 1.6,
+    minimum_value = 0,
+    maximum_value = 20,
+    order         = '030',
+  },
+  { 
+    name          = 'ts-water-deep-distance',
+    type          = 'double-setting',
+    setting_type  = 'startup',
+    default_value = 10,
+    minimum_value = 0,
+    maximum_value = 20,
+    order         = '040',
+  },
+}
